@@ -1,12 +1,7 @@
 import requests
 from crewai.tools import BaseTool
-from pydantic import BaseModel
 
 MCP_URL = "http://127.0.0.1:8080/mcp"
-
-class ComputeStatsInput(BaseModel):
-    rows: list
-    column: str
 
 class ReadCSVTool(BaseTool):
 
@@ -29,9 +24,13 @@ class ComputeStatsTool(BaseTool):
 
     name: str = "Compute Stats Tool"
 
-    description: str = "Computes statistics"
+    description: str = """
+    Compute statistics for a column.
 
-    args_schema = ComputeStatsInput
+    Arguments:
+      rows (list): rows of data
+      column (str): column name
+    """
 
     def _run(self, rows, column):
 
