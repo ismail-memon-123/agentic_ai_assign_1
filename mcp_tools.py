@@ -1,5 +1,6 @@
 import requests
 from crewai.tools import BaseTool
+from pydantic import BaseModel
 
 MCP_URL = "http://127.0.0.1:8080/mcp"
 
