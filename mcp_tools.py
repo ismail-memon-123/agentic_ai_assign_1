@@ -3,6 +3,10 @@ from crewai.tools import BaseTool
 
 MCP_URL = "http://127.0.0.1:8080/mcp"
 
+class ComputeStatsInput(BaseModel):
+    rows: list
+    column: str
+
 class ReadCSVTool(BaseTool):
 
     name: str = "Read CSV Tool"
@@ -25,6 +29,8 @@ class ComputeStatsTool(BaseTool):
     name: str = "Compute Stats Tool"
 
     description: str = "Computes statistics"
+
+    args_schema = ComputeStatsInput
 
     def _run(self, rows, column):
 
