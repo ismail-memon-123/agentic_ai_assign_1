@@ -18,7 +18,8 @@ agent = Agent(
         ReadCSVTool(),
         ComputeStatsTool()
     ],
-    llm=llm
+    llm=llm,
+    verbose=True
 )
 
 task = Task(
@@ -32,7 +33,8 @@ task = Task(
 
 crew = Crew(
     agents=[agent],
-    tasks=[task]
+    tasks=[task],
+    verbose=True
 )
 
 result = crew.kickoff()
